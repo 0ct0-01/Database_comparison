@@ -2,7 +2,7 @@ import pandas as pd
 
 # Load datasets
 ieee_results = pd.read_csv('IEEE_results.csv', low_memory=False)
-openalex_results = pd.read_csv('OpenAlex_results_more.csv', low_memory=False)
+openalex_results = pd.read_csv('OpenAlex_results.csv', low_memory=False)
 
 # Normalize DOI columns
 ieee_results['DOI'] = ieee_results['DOI'].str.lower().str.strip()
