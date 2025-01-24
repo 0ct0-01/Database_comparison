@@ -1,4 +1,4 @@
 *.csv
 *.json
 json_results/
-unique_topics_with_ids.txt
+*.txt
