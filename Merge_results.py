@@ -7,6 +7,9 @@ input_file = 'json_results/filtered_results_all.json'
 summary_output_file = 'paper_summaries.json'
 summary_text_file = 'paper_summaries.txt'
 
+# Years filter
+years_filter = range(2015, 2025)
+
 # Load the consolidated JSON results
 with open(input_file, "r", encoding="utf-8") as file:
     all_results = json.load(file)
@@ -15,7 +18,7 @@ with open(input_file, "r", encoding="utf-8") as file:
 unique_summaries = {
     result["title"]: {"title": result["title"], "doi": result["doi"]}
     for result in all_results.get("results", [])
-    if "doi" in result and "title" in result
+    if "doi" in result and "title" in result and result.get("publication_year") in years_filter and result.get("type") == "article"
 }.values()
 
 # Save titles and DOIs to a plain text file

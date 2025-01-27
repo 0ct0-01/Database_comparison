@@ -3,7 +3,6 @@ import urllib.parse
 import json
 import os
 import shutil
-import sys
 
 # Load the unique topics and their IDs
 topic_ids_file = 'unique_topics_with_ids.txt'  # Replace with the correct file path
@@ -42,6 +41,10 @@ search_string = '("Autonomous Driving Systems" OR "Self-driving Cars" OR "Automa
 # Paper Type
 paper_type = "article"
 
+# Publication year range
+start_year = 2015
+end_year = 2025
+
 # Encode the topic ID(s)
 encoded_topic_ids = "|".join([urllib.parse.quote(topic_id) for topic_id in topic_ids])
 
@@ -56,7 +59,8 @@ while True:
     query_url = (
         f"{base_url}?&search={(search_string)}"
         f"&filter=topics.id:{encoded_topic_ids}"
-        f"&filter=type:{paper_type}"
+        # f"&filter=type:{paper_type}"
+        # f"&filter=publication_year:{start_year}-{end_year}"
         f"&per-page=200&page={page}"
     )
 
