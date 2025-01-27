@@ -29,7 +29,8 @@ topic_ids = [
     "T10883",  # Ethics and Social Impacts of AI
     "T12026",  # Explainable Artificial Intelligence (XAI)
     "T10586",  # Robotic Path Planning Algorithms
-    "T10525"   # Human-Automation Interaction and Safety
+    "T10525",  # Human-Automation Interaction and Safety
+    "T10743"   # Software Testing and Debugging Techniques
 ]
 
 # Base OpenAlex API URL
@@ -37,6 +38,9 @@ base_url = "https://api.openalex.org/works"
 
 # Search string (encoded for URL)
 search_string = '("Autonomous Driving Systems" OR "Self-driving Cars" OR "Automated driving Systems" OR "Autonomous Vehicles" OR "ADS") AND ("automatic program repair" OR "software repair techniques" OR "program failures" OR "causality analysis" OR "software fault localization" OR "automated fault localization" OR "fully automated debugging" OR "feature interaction failures" OR "automatic fixing" OR "automatic patching" OR "automatic recovery" OR "survival" OR "explainable AI" OR "fault management")'
+
+# Paper Type
+paper_type = "article"
 
 # Encode the topic ID(s)
 encoded_topic_ids = "|".join([urllib.parse.quote(topic_id) for topic_id in topic_ids])
@@ -52,6 +56,7 @@ while True:
     query_url = (
         f"{base_url}?&search={(search_string)}"
         f"&filter=topics.id:{encoded_topic_ids}"
+        f"&filter=type:{paper_type}"
         f"&per-page=200&page={page}"
     )
 

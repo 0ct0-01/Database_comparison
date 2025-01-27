@@ -11,9 +11,9 @@ summary_text_file = 'paper_summaries.txt'
 with open(input_file, "r", encoding="utf-8") as file:
     all_results = json.load(file)
 
-# Extract unique papers based on DOI
+# Extract unique papers based on title
 unique_summaries = {
-    result["doi"]: {"title": result["title"], "doi": result["doi"]}
+    result["title"]: {"title": result["title"], "doi": result["doi"]}
     for result in all_results.get("results", [])
     if "doi" in result and "title" in result
 }.values()
