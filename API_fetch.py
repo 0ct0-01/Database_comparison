@@ -32,11 +32,14 @@ topic_ids = [
     "T10743"   # Software Testing and Debugging Techniques
 ]
 
+field = 17 # Computer Science
+
 # Base OpenAlex API URL
 base_url = "https://api.openalex.org/works"
 
 # Search string (encoded for URL)
-search_string = '("Autonomous Driving Systems" OR "Self-driving Cars" OR "Automated driving Systems" OR "Autonomous Vehicles" OR "ADS") AND ("automatic program repair" OR "software repair techniques" OR "program failures" OR "causality analysis" OR "software fault localization" OR "automated fault localization" OR "fully automated debugging" OR "feature interaction failures" OR "automatic fixing" OR "automatic patching" OR "automatic recovery" OR "survival" OR "explainable AI" OR "fault management")'
+# search_string = '("Autonomous Driving Systems" OR "Self-driving Cars" OR "Automated driving Systems" OR "Autonomous Vehicles" OR "ADS") AND ("automatic program repair" OR "software repair techniques" OR "program failures" OR "causality analysis" OR "software fault localization" OR "automated fault localization" OR "fully automated debugging" OR "feature interaction failures" OR "automatic fixing" OR "automatic patching" OR "automatic recovery" OR "survival" OR "explainable AI" OR "fault management")'
+search_string = '("Autonomous Driving Systems" OR "Self-driving Cars" OR "Automated driving Systems" OR "Autonomous Vehicles" OR "ADS") AND  ("CAUSAL" OR "REPAIR" OR "EXPLANATION" OR "EXPLAIN" OR "DEBUG" OR "LOCALIZATION" OR "LOCALISATION" OR "DIAGNOS" OR "SIMPLIFY" OR "SIMPLIFICATION" OR "MINIMISATION" OR "MINIMIZATION" OR "MINIMIZE" OR "MINIMISE")'
 
 # Paper Type
 paper_type = "article"
@@ -58,7 +61,8 @@ while True:
     # Construct the query URL with pagination
     query_url = (
         f"{base_url}?&search={(search_string)}"
-        f"&filter=topics.id:{encoded_topic_ids}"
+        f"&filter=topics.field.id:{field}"
+        # f"&filter=topics.id:{encoded_topic_ids}"
         # f"&filter=type:{paper_type}"
         # f"&filter=publication_year:{start_year}-{end_year}"
         f"&per-page=200&page={page}"
